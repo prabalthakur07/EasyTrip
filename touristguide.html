@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TravelConnect - Find Your Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, html {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #0d47a1;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #f4f4f4;
+      border-radius: 10px;
+      width: 300px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .login-btn {
+      background: white;
+      color: #0d47a1;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #0d47a1;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #e3f2fd;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #0d47a1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Login Modal */
+    #loginModal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .close {
+      float: right;
+      cursor: pointer;
+      font-size: 24px;
+    }
+    form label {
+  display: inline-block;
+  margin: 10px 15px 10px 0;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div><strong>TravelConnect</strong></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#locations">Locations</a>
+    <a href="#about">About</a>
+    <a href="#register">Register</a>
+    <button class="login-btn" onclick="openLogin()">Login</button>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <h1>Explore. Connect. Discover.</h1>
+</div>
+
+<section id="locations">
+  <h2>Top Travel Destinations</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://tse1.mm.bing.net/th?id=OIP.OjWZvVZMY4541I260hOpjQHaE1&pid=Api&P=0&h=180" alt="Taj Mahal">
+      <h3>Taj Mahal, India</h3>
+      <p>Discover India's iconic symbol of love and history with a local guide.</p>
+    </div>
+    <div class="card">
+      <img src="https://tse3.mm.bing.net/th?id=OIP.twvYFqYZ4T4K3549MyG23gHaEK&pid=Api&P=0&h=180" alt="Rishikesh">
+      <h3>Rishikesh, Uttrakhand</h3>
+      <p>Rishikesh, the "Yoga Capital of the World," is a serene town on the banks of the Ganges, famous for spiritual retreats, adventure sports, and scenic beauty.</p>
+    </div>
+    <div class="card">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.OewEnbkX3c3xdfXxTpxeuAHaE8&pid=Api&P=0&h=180" alt="Jammu&kashmir">
+      <h3>Jammu Kashmir, India</h3>
+      <p>Jammu and Kashmir, known as the "Paradise on Earth," is renowned for its breathtaking landscapes, snow-capped mountains, and vibrant cultural heritage.</p>
+    </div>
+    <div class="card">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.RvewbebmdhXWdTcYXFaEMwHaE8&pid=Api&P=0&h=180" alt="Tungnath">
+      <h3>Tungnath, Uttrakhand</h3>
+      <p>Tungnath, the highest Shiva temple in the world, offers a spiritual journey amidst the majestic Himalayas and breathtaking trekking routes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About TravelConnect</h2>
+  <p>We connect tourists to verified and experienced local guides across the world. Whether you're traveling alone or with friends, find the perfect guide to make your journey unforgettable.</p>
+</section>
+<section id="register">
+  <h2>Register as a Tourist or Guide</h2>
+  <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="password" placeholder="Create Password" required>
+
+    <label>
+      <input type="radio" name="userType" value="tourist" required>
+      Tourist
+    </label>
+    <label>
+      <input type="radio" name="userType" value="guide">
+      Guide
+    </label>
+
+    <input type="text" placeholder="City you're visiting or guiding in" required>
+    <textarea rows="4" placeholder="Tell us about yourself (Optional)"></textarea>
+    <button type="submit">Register</button>
+  </form>
+</section>
+
+
+<footer>
+  <p>© 2025 TravelConnect | Made with ❤️ to help you explore the world</p>
+</footer>
+
+<!-- Login Modal -->
+<div id="loginModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeLogin()">&times;</span>
+    <h2>User Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </div>
+</div>
+
+<script>
+  function openLogin() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+
+  function closeLogin() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target == modal) {
+      closeLogin();
+    }
+  }
+</script>
+
+</body>
+</html> this is the code give a ppt having gaps future aspect how we will earn money and all in pdf form 
