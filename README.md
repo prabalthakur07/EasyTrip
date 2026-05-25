@@ -1,3 +1,3 @@
 # EasyTrip
-AI, and Travel-tech platform
+ Travel-tech platform 
 
